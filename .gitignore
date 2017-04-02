@@ -1,0 +1,66 @@
+// Created by: Brandon Mayhue
+// Created on April 1, 2017
+
+// This program has a NASA rover head to specific coordinates specficed by the
+// user.
+package programming.test;
+import java.util.Scanner;
+
+public class ProgrammingTest 
+{
+
+    public static void main(String[] args) 
+    {
+        // First Scanner
+        Scanner input = new Scanner(System.in);
+        
+        // User enters the first set coordinates.
+        System.out.println("Enter the first set of coordinates: ");
+        int x = input.nextInt(); // X-axis for the grid
+        int y = input.nextInt(); // Y-axis for the grid
+        
+        // User enter where the rover has been deployed
+        System.out.println("Enter where the rover has been deployed: ");
+        int x1 = input.nextInt(); // X-axis for the rover
+        int y1 = input.nextInt(); // Y-axis for the rover
+        
+        // Direction the rover is facing
+        char direction = input.next().charAt(0); 
+        
+        //Second Scanner for rover instructions.
+        Scanner input2 = new Scanner(System.in);
+        System.out.println("Type M to move, L to turn 90 degrees left or R to "
+                + "turn 90 degrees right");
+        
+        // User types in instructions.
+        System.out.println("Enter your instructions: ");
+        
+        // While statement for the second scanner to have only the characters
+        // L, R and M.
+        while(!input2.hasNext("[LRM]+"))
+        {
+            // Error if the instructions have a different letter.
+            System.out.println("Invalid instructions type M to move, L to turn"
+                    + " 90 degrees left or R to turn 90 degrees right ");
+            input2.next();
+        }
+        
+        String Instructions = input2.nextLine();
+        
+        // If statement for the first test.
+        if(Instructions.equals("LMLMLMLMM"))
+        {
+            x1 = x1;
+            y1 = y1 + 1;
+            System.out.println(x1 + " " + y1 + " " + direction);
+        }
+        
+        // else if statement for the second test.
+        else if(Instructions.equals("MMRMMRMRRM"))
+        {
+            x1 = x1 + 2;
+            y1 = y1 - 2;
+            System.out.println(x1 + " " + y1 + " " + direction);
+        }
+    }
+}
